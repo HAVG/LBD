@@ -7,13 +7,14 @@ select *
 from Consultorio
 
 insert into Consultorio
-values (1,'Edificio A, Piso 1')
+values (1,'Edificio 1, Piso 1')
 
 select *
 from DetalleReceta
 
 select *
 from DoctorConsultorio
+
 
 insert into DoctorConsultorio
 values ('297DE01D-2282-4274-9F9E-74267A3A2F41','Cardiologo')
@@ -22,7 +23,7 @@ values ('48B412E1-3189-4393-A2E0-D991502B8875','Psicologo')
 insert into DoctorConsultorio
 values ('C236E60A-1B36-489A-A44F-F8807901F1C0','Neurologo')
 
-select *
+select NomEmpleado, IDEmpleado
 from EmpleadoConsultorio
 
 insert into EmpleadoConsultorio
@@ -31,6 +32,8 @@ insert into EmpleadoConsultorio
 values (NewId(),'Jose Eduardo Torres Torres')
 insert into EmpleadoConsultorio
 values (NewId(),'Angel Mario Barbosa de Leon')
+insert into EmpleadoConsultorio
+values (default,default)
 
 delete from EmpleadoConsultorio
 where NomEmpleado = 'Alberto Aphac Renteria'
@@ -45,7 +48,6 @@ from HistorialMedicinas
 select *
 from HistorialPaciente
 
-drop table MovimientoSalida
 
 select *
 from ListadoMedicamentos
@@ -62,3 +64,6 @@ from PacienteConsultorio
 
 select *
 from RecetaPaciente
+
+select *
+from MovimientosEntrada
