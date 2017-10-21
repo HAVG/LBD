@@ -48,7 +48,6 @@ from HistorialMedicinas
 select *
 from HistorialPaciente
 
-
 select *
 from ListadoMedicamentos
 
@@ -61,6 +60,11 @@ values (newid(),'Nitrofurantoina','Comprimidos: 100 mg')
 
 select *
 from PacienteConsultorio
+
+insert into PacienteConsultorio
+values (newid(),'Hector Andres Valdes Gonzalez')
+insert into PacienteConsultorio
+values (default,default)
 
 select *
 from RecetaPaciente
