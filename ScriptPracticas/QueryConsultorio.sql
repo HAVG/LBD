@@ -76,9 +76,18 @@ from MovimientosEntrada
 
 
 
+select *  
+into #InValid
+from InventarioMedicamentos
+where Cantidad<10
 
-
-
+select *
+from(
+select m.IDMedicamento,SUM(i.Cantidad+e.Cantidad-s.Cantidad) as CantTotal
+from ListadoMedicamentos m,InventarioMedicamentos i,MovimientosEntrada e,MovimientoSalida s
+group by m.IDMedicamento
+)as InvAct 
+where CantTotal>10
 
 create view VistaCitasDoctor as
 select c.InicioCita,c.FinCita,e.NomEmpleado,p.NomPaciente
