@@ -17,11 +17,11 @@ from DoctorConsultorio
 
 
 insert into DoctorConsultorio
-values ('297DE01D-2282-4274-9F9E-74267A3A2F41','Cardiologo')
+values ('90612357-50D1-479F-AAAA-E15B9BD5DE8C','Cardiologo')
 insert into DoctorConsultorio
-values ('48B412E1-3189-4393-A2E0-D991502B8875','Psicologo')
+values ('742A4991-85F3-44FD-A4AE-EBD7E838FE74','Psicologo')
 insert into DoctorConsultorio
-values ('C236E60A-1B36-489A-A44F-F8807901F1C0','Neurologo')
+values ('275DD499-E447-4513-A483-D8D3DC43092F','Neurologo')
 
 select NomEmpleado, IDEmpleado
 from EmpleadoConsultorio
@@ -71,3 +71,35 @@ from RecetaPaciente
 
 select *
 from MovimientosEntrada
+
+
+
+
+
+
+
+
+
+create view VistaCitasDoctor as
+select c.InicioCita,c.FinCita,e.NomEmpleado,p.NomPaciente
+from CitaPaciente c,PacienteConsultorio p,EmpleadoConsultorio e
+left join CitaPaciente a on a.IDEmpleado=e.IDEmpleado
+
+create view VistaCitasPaciente as
+select c.InicioCita,c.FinCita,e.NomEmpleado,p.NomPaciente
+from CitaPaciente c,EmpleadoConsultorio e,PacienteConsultorio p
+left join CitaPaciente b on b.IDPaciente=p.IDPaciente
+
+create view VistaCitas as
+select p.InicioCita,p.FinCita,e.NomEmpleado,p.NomPaciente
+from VistaCitasPaciente p,VistaCitasDoctor e
+left join VistaCitasPaciente c on e.NomEmpleado=c.NomEmpleado
+
+select * 
+from VistaCitas
+
+select *
+from VistaCitasDoctor
+
+select *
+from VistaCitasPaciente
