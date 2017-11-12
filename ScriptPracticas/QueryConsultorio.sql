@@ -114,15 +114,15 @@ begin
 	order by NewID()
 end
 --Primer Prodedure
-create trigger tr_Suma
-on MovimientosEntrada
+create trigger tr_Resta
+on MovimientoSalida
 after insert,update
 as
 begin
 	update InventarioMedicamentos
-	set InventarioMedicamentos.Cantidad=dbo.suma_resta(InventarioMedicamentos.Cantidad,inserted.cantidad)
+	set InventarioMedicamentos.Cantidad=dbo.suma_resta(InventarioMedicamentos.Cantidad,-cantidad)
 	
-	where InventarioMedicamentos.IdMedicamento=INSERTED.IdMedicamento
+	where InventarioMedicamentos.IdMedicamento=IdMedicamento
 end
 --PrimerTrigger
 create function suma_resta
